@@ -16,23 +16,17 @@ class BaseModel():
         self.updated_at = datetime.today()
         if len(kwargs) != 0:
             for x, y in kwargs.items():
-                if x != "__class__" and (x == "created_at" or x == "updated_at")
-                :
-                    self.__dict__[x] = datetime.strptime(y, %Y-%m-%dT%H:%M:%S.%f
-                    )
+                if x == "created_at" or x == "updated_at":
+                    self.__dict__[x] = datetime.strptime(y, "%Y-%m-%dT%H:%M:%S.%f")
                 else:
-                    setattr(self, x, y)
-        else:
-            storage.new()
-
+                    self.__dict__[x] = y
     def __str__(self):
         """string"""
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
                                      self.__dict__)
-     def save(self):
+    def save(self):
         """Update updated_at with the current datetime."""
         self.updated_at = datetime.today()
-        models.storage.save()
 
     def to_dict(self):
         """returns a dictionary containing all keys/values"""
