@@ -20,6 +20,9 @@ class BaseModel():
                     self.__dict__[x] = datetime.strptime(y, "%Y-%m-%dT%H:%M:%S.%f")
                 else:
                     self.__dict__[x] = y
+        else:
+            models.storage.new()
+
     def __str__(self):
         """string"""
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
@@ -27,6 +30,8 @@ class BaseModel():
     def save(self):
         """Update updated_at with the current datetime."""
         self.updated_at = datetime.today()
+        models.storage.save(self)
+        models.storage.new(self)
 
     def to_dict(self):
         """returns a dictionary containing all keys/values"""
