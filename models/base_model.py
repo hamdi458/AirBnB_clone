@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 from uuid import uuid4
 from datetime import datetime
+import models
 """
 class BaseModel that defines all common attributes/methods for other classes
 """
@@ -21,7 +22,7 @@ class BaseModel():
                 else:
                     self.__dict__[x] = y
         else:
-            models.storage.new()
+            models.storage.new(self)
 
     def __str__(self):
         """string"""
@@ -30,7 +31,7 @@ class BaseModel():
     def save(self):
         """Update updated_at with the current datetime."""
         self.updated_at = datetime.today()
-        models.storage.save(self)
+        models.storage.save()
         models.storage.new(self)
 
     def to_dict(self):
