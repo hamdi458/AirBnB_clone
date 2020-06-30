@@ -10,6 +10,7 @@ class BaseModel that defines all common attributes/methods for other classes
 class BaseModel():
     """class BaseModel that defines all common attributes/methods for
     other classes."""
+
     def __init__(self, *args, **kwargs):
         """initialise"""
         self.id = str(uuid4())
@@ -18,7 +19,8 @@ class BaseModel():
         if len(kwargs) != 0:
             for x, y in kwargs.items():
                 if x == "created_at" or x == "updated_at":
-                    self.__dict__[x] = datetime.strptime(y, "%Y-%m-%dT%H:%M:%S.%f")
+                    self.__dict__[x] = datetime.strptime(
+                        y, "%Y-%m-%dT%H:%M:%S.%f")
                 else:
                     self.__dict__[x] = y
         else:
@@ -28,6 +30,7 @@ class BaseModel():
         """string"""
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
                                      self.__dict__)
+
     def save(self):
         """Update updated_at with the current datetime."""
         self.updated_at = datetime.today()
