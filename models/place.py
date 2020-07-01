@@ -1,6 +1,6 @@
 #!/usr/bin/python
 """heritage place from base"""
-from models.base_class import BaseModel
+from models.base_model import BaseModel
 
 
 class Place(BaseModel):
