@@ -28,14 +28,13 @@ class BaseModel():
 
     def __str__(self):
         """string"""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
+        return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id,
                                      self.__dict__)
 
     def save(self):
         """Update updated_at with the current datetime."""
-        self.updated_at = datetime.today()
+        self.updated_at = datetime.now()
         models.storage.save()
-        models.storage.new(self)
 
     def to_dict(self):
         """returns a dictionary containing all keys/values"""
