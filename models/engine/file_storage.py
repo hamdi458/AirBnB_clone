@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import json
 """class FileStorage"""
+from models.user import User
+classes = {"User": User}
 
 
 class FileStorage():
