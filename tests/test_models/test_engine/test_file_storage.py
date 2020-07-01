@@ -15,7 +15,6 @@ from models.city import City
 from datetime import datetime
 
 
-
 class Test_FileStorage(unittest.TestCase):
     """Unittests for filestorage"""
 
@@ -51,9 +50,11 @@ class Test_FileStorage_functions(unittest.TestCase):
         self.file_path = FileStorage._FileStorage__file_path
         self.user = User()
         self.user.save()
+
     def test_all(self):
         """test aall"""
         self.assertEqual(dict, type(models.storage.all()))
+
     @classmethod
     def filejson(self):
         """test tearDown"""
@@ -141,7 +142,6 @@ class Test_FileStorage_functions(unittest.TestCase):
             self.assertIn("Place." + pl.id, save_txt)
             self.assertIn("City." + ct.id, save_txt)
 
-
     def test_save_arg(self):
         """test meth save"""
         with self.assertRaises(TypeError):
@@ -173,6 +173,7 @@ class Test_FileStorage_functions(unittest.TestCase):
         self.assertIn("Amenity." + amn.id, objects)
         self.assertIn("Place." + pl.id, objects)
         self.assertIn("City." + ct.id, objects)
+
     def test_reload_args(self):
         """test meth reload"""
         with self.assertRaises(TypeError):
