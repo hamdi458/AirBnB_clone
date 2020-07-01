@@ -29,7 +29,7 @@ class BaseModel():
     def __str__(self):
         """string"""
         return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id,
-                                     self.__dict__)
+                                         self.__dict__)
 
     def save(self):
         """Update updated_at with the current datetime."""
