@@ -6,7 +6,3 @@ from models.base_model import BaseModel
 class State(BaseModel):
     """state"""
     name = ""
-
-    def __init__(self, *args, **kwargs):
-        """initisation new state"""
-        super().__init__(*args, **kwargs)
